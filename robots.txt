@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ashif-web-studio.vercel.app/sitemap.xml

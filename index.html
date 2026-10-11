@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JanSeva Gram Panchayat Portal – Nawada Parsauni, Bihar</title>
+<meta name="description" content="Fictional demo portal for Nawada Parsauni Gram Panchayat, Bihar: welfare schemes, certificate forms, announcements, departments, directory and emergency contacts.">
+<meta name="theme-color" content="#0F766E">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://ashif-web-studio.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JanSeva Gram Panchayat Portal – Nawada Parsauni">
+<meta property="og:description" content="Digital governance, welfare schemes and village information. Frontend demo by Ashif Web Studio.">
+<meta property="og:image" content="icons/icon.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JanSeva Gram Panchayat Portal – Nawada Parsauni">
+<meta name="twitter:description" content="Frontend demo portal built with HTML5, CSS3 and vanilla JavaScript.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loader" aria-hidden="true"><div class="spin"></div><p>JanSeva</p></div>
+<div id="progress"></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="demo-bar" role="note"><strong>Demo:</strong> fictional frontend showcase. No real applications or records are processed.</div>
+
+<header id="top" class="header">
+  <div class="gov-strip">
+    <span data-i18n="gov">Government of Bihar · Panchayati Raj (Sample)</span>
+    <div class="tools">
+      <label class="sr" for="lang">Language</label>
+      <select id="lang" aria-label="Language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="ur">اردو</option></select>
+      <button id="theme" class="icon-btn" aria-label="Toggle dark mode">🌓</button>
+    </div>
+  </div>
+  <div class="bar">
+    <a href="#home" class="brand"><img src="icons/icon.svg" alt="" width="44" height="44"><span><b>JanSeva</b><small>Nawada Parsauni</small></span></a>
+    <form id="searchForm" role="search" class="search"><input id="search" type="search" placeholder="Search schemes, services, contacts…" aria-label="Search the portal"></form>
+    <button id="menuBtn" class="icon-btn menu" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+  <nav id="nav" aria-label="Main">
+    <a href="#home" data-i18n="n_home">Home</a><a href="#about" data-i18n="n_about">About Village</a><a href="#panchayat" data-i18n="n_gp">Gram Panchayat</a><a href="#schemes" data-i18n="n_sch">Schemes</a><a href="#certificates" data-i18n="n_cert">Certificates</a><a href="#announcements" data-i18n="n_ann">Announcements</a><a href="#departments" data-i18n="n_dep">Departments</a><a href="#directory" data-i18n="n_dir">Directory</a><a href="#emergency" data-i18n="n_em">Emergency</a><a href="#gallery" data-i18n="n_gal">Gallery</a><a href="#downloads" data-i18n="n_dl">Downloads</a><a href="#contact" data-i18n="n_con">Contact</a>
+  </nav>
+  <div class="ticker" aria-label="Latest news"><div class="track" id="ticker"></div></div>
+</header>
+
+<main id="main">
+<section id="home" class="hero">
+  <div class="wrap hero-in">
+    <div class="reveal" data-anim="left">
+      <p class="chip">Digital India inspired · Sample portal</p>
+      <h1 data-i18n="h1">Welcome to JanSeva Gram Panchayat Portal – Nawada Parsauni</h1>
+      <p class="lead" data-i18n="sub">Empowering citizens with digital governance, public services, welfare schemes, village information, and transparent administration.</p>
+      <div class="btns"><a class="btn pri ripple" href="#directory">Explore Services</a><a class="btn org ripple" href="#certificates">Apply for Certificate</a><a class="btn gl ripple" href="#schemes">Government Schemes</a><a class="btn gl ripple" href="#gallery">Village Gallery</a></div>
+    </div>
+    <div class="glass hero-card reveal" data-anim="right"><div class="float" aria-hidden="true">🏛️</div><h2>Nawada Parsauni</h2><p>Bihar, India</p><p class="muted">Gram Sabha · Wards 1–12 · Open Mon–Sat</p></div>
+  </div>
+</section>
+
+<section class="wrap stats" aria-label="Quick statistics" id="stats"></section>
+
+<section id="about" class="wrap sec">
+  <h2 class="reveal">About Village</h2>
+  <div class="grid g3" id="aboutGrid"></div>
+  <div class="map reveal" role="img" aria-label="Google Maps placeholder">📍 Google Maps placeholder – Nawada Parsauni, Bihar</div>
+</section>
+
+<section id="panchayat" class="wrap sec">
+  <h2 class="reveal">Gram Panchayat</h2>
+  <div class="grid g3" id="gpGrid"></div>
+  <p><a class="btn pri" href="assets/contact-list.txt" download>Download Contact List</a></p>
+</section>
+
+<section id="schemes" class="wrap sec">
+  <h2 class="reveal">Government Welfare Schemes</h2>
+  <p class="muted">Sample information only. Tap a card to see eligibility, benefits and documents.</p>
+  <div class="grid g3" id="schemeGrid"></div>
+</section>
+
+<section id="certificates" class="wrap sec">
+  <h2 class="reveal">Certificate Applications</h2>
+  <div class="glass form-card reveal">
+    <form id="certForm" novalidate>
+      <div class="row"><label for="ctype">Certificate</label><select id="ctype"></select></div>
+      <div class="row"><label for="cname">Applicant name</label><input id="cname" autocomplete="name" required><small class="err"></small></div>
+      <div class="row"><label for="cmob">Mobile number</label><input id="cmob" inputmode="numeric" maxlength="10" autocomplete="tel" required><small class="err"></small></div>
+      <div class="row"><label for="cadd">Address</label><textarea id="cadd" rows="2" required></textarea><small class="err"></small></div>
+      <div class="row"><label for="cpur">Purpose</label><input id="cpur" required><small class="err"></small></div>
+      <div class="row"><label for="cfile">Upload placeholder</label><input id="cfile" type="file" accept=".pdf,.jpg,.png"></div>
+      <button class="btn pri ripple" type="submit">Submit application</button>
+    </form>
+  </div>
+</section>
+
+<section id="announcements" class="wrap sec">
+  <h2 class="reveal">Local Announcements</h2>
+  <div class="grid g3" id="annGrid"></div>
+</section>
+
+<section id="departments" class="wrap sec">
+  <h2 class="reveal">Departments</h2>
+  <div class="grid g3" id="depGrid"></div>
+</section>
+
+<section id="directory" class="wrap sec">
+  <h2 class="reveal">Village Directory</h2>
+  <div class="grid g4" id="dirGrid"></div>
+</section>
+
+<section id="emergency" class="wrap sec">
+  <h2 class="reveal">Emergency Contacts</h2>
+  <div class="grid g4" id="emGrid"></div>
+</section>
+
+<section id="gallery" class="wrap sec">
+  <h2 class="reveal">Gallery</h2>
+  <div class="grid g4" id="galGrid"></div>
+</section>
+
+<section id="downloads" class="wrap sec">
+  <h2 class="reveal">Downloads</h2>
+  <div class="grid g3" id="dlGrid"></div>
+</section>
+
+<section id="faq" class="wrap sec">
+  <h2 class="reveal">Frequently Asked Questions</h2>
+  <div id="faqList"></div>
+</section>
+
+<section id="contact" class="wrap sec">
+  <h2 class="reveal">Contact</h2>
+  <div class="grid g2">
+    <div class="glass pad reveal"><div class="map small" role="img" aria-label="Map placeholder">📍 Map placeholder</div>
+      <p><b>Gram Panchayat Office</b><br>Near Community Hall, Nawada Parsauni, Bihar (sample address)</p>
+      <p>☎ +91 00000 00000<br>✉ panchayat@example.invalid<br>🕒 Mon–Sat, 10:00–17:00</p></div>
+    <form id="contactForm" class="glass pad reveal" novalidate>
+      <div class="row"><label for="kn">Name</label><input id="kn" required><small class="err"></small></div>
+      <div class="row"><label for="ke">Email</label><input id="ke" type="email" required><small class="err"></small></div>
+      <div class="row"><label for="km">Message</label><textarea id="km" rows="4" required></textarea><small class="err"></small></div>
+      <button class="btn pri ripple" type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="disclaimer" role="note"><b>Demo notice</b><p>This website is a fictional frontend demonstration of a Gram Panchayat portal for Nawada Parsauni village, created solely for educational, portfolio, and showcase purposes. Government schemes, certificate applications, announcements, beneficiary data, and public information shown are sample content only. No real applications, records, or government services are processed through this website.</p></div>
+</section>
+
+<section class="wrap sec">
+  <div class="dev glass reveal" data-anim="zoom">
+    <h2>Designed &amp; Developed by Mohammad Ashif 💙</h2>
+    <p><b>Ashif Web Studio</b> · <a href="https://ashif-web-studio.vercel.app/" rel="noopener">https://ashif-web-studio.vercel.app/</a></p>
+    <div class="btns"><a class="btn pri" href="https://ashif-web-studio.vercel.app/" target="_blank" rel="noopener">Visit Portfolio</a><a class="btn org" href="mailto:hello@example.invalid">Hire Me</a></div>
+    <ul class="badges"><li>✔ Frontend Demo Project</li><li>✔ HTML5 • CSS3 • JavaScript ES6</li><li>✔ Developed by Ashif Web Studio</li><li>✔ Responsive &amp; SEO Optimized</li></ul>
+    <div class="social"><a href="https://github.com/" aria-label="GitHub" rel="noopener">GitHub</a><a href="https://www.linkedin.com/" aria-label="LinkedIn" rel="noopener">LinkedIn</a><a href="https://ashif-web-studio.vercel.app/" aria-label="Portfolio">Portfolio</a><a href="mailto:hello@example.invalid" aria-label="Email">Email</a><a href="https://wa.me/910000000000" aria-label="WhatsApp" rel="noopener">WhatsApp</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap grid g4">
+    <div><h3>Quick Links</h3><a href="#about">About Village</a><a href="#panchayat">Gram Panchayat</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+    <div><h3>Government Services</h3><a href="#schemes">Schemes</a><a href="#certificates">Certificates</a><a href="#departments">Departments</a></div>
+    <div><h3>Downloads &amp; Help</h3><a href="#downloads">Downloads</a><a href="#emergency">Emergency Contacts</a></div>
+    <div><h3>Newsletter</h3><form id="newsForm" class="news"><label class="sr" for="ne">Email</label><input id="ne" type="email" placeholder="you@example.com" required><button class="btn org" type="submit">Subscribe</button></form></div>
+  </div>
+  <p class="copy">© 2026 JanSeva Gram Panchayat Portal – Nawada Parsauni. All Rights Reserved.<br>Designed &amp; Developed by Mohammad Ashif 💙 · Ashif Web Studio · <a href="https://ashif-web-studio.vercel.app/">ashif-web-studio.vercel.app</a></p>
+</footer>
+
+<a id="sos" class="fab sos" href="#emergency" aria-label="Emergency contacts">🚨</a>
+<a class="fab wa" href="https://wa.me/910000000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+<button id="toTop" class="fab up" aria-label="Back to top">↑</button>
+
+<dialog id="modal"><div id="modalBody"></div><button class="btn pri" id="modalClose">Close</button></dialog>
+<dialog id="lightbox"><div id="lbBody" class="lb"></div><button class="btn pri" id="lbClose">Close</button></dialog>
+<script src="script.js"></script>
+</body>
+</html>
